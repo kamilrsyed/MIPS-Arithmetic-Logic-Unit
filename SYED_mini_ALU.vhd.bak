@@ -1,0 +1,84 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity SYED_mini_ALU is
+
+	port
+	(
+					clk									: in std_logic;
+					ir										: in	std_logic_vector(31 downto 0);
+					Cout									: out std_logic;
+					Overflow								: out std_logic;
+					Result								: out std_logic_vector(31 downto 0)
+	);
+	
+end SYED_mini_ALU;
+
+architecture Structure of SYED_mini_ALU is
+
+	COMPONENT SYED_register_file IS
+		PORT
+		(
+					rd1add								: in std_logic_vector(4 downto 0);
+					rd2add								: in std_logic_vector(4 downto 0);
+					wradd									: in std_logic_vector(4 downto 0);
+					data									: in std_logic_vector(31 downto 0); 
+					wren									: in std_logic;    
+					clock									: in std_logic; 
+					Q1										: out std_logic_vector(31 downto 0);
+					Q2										: out std_logic_vector(31 downto 0) 
+		);
+	END COMPONENT;
+	
+	COMPONENT SYED_lpm_Add_Sub_Unsigned IS
+	PORT
+		(
+					add_sub								: IN STD_LOGIC ;
+					cin									: IN STD_LOGIC ;
+					dataa									: IN STD_LOGIC_VECTOR (31 DOWNTO 0);
+					datab									: IN STD_LOGIC_VECTOR (31 DOWNTO 0);
+					cout									: OUT STD_LOGIC ;
+					overflow								: OUT STD_LOGIC ;
+					result								: OUT STD_LOGIC_VECTOR (31 DOWNTO 0)
+		);
+	END COMPONENT;
+	
+	COMPONENT SYED_lpm_Add_Sub_Signed IS
+	PORT
+		(
+					add_sub								: IN STD_LOGIC ;
+					cin									: IN STD_LOGIC ;
+					dataa									: IN STD_LOGIC_VECTOR (31 DOWNTO 0);
+					datab									: IN STD_LOGIC_VECTOR (31 DOWNTO 0);
+					cout									: OUT STD_LOGIC ;
+					overflow								: OUT STD_LOGIC ;
+					result								: OUT STD_LOGIC_VECTOR (31 DOWNTO 0)
+		);
+	END COMPONENT;
+	
+	signal op_code : std_logic_vector (3 downto 0);
+	signal rd_addr	: std_logic_vector (4 downto 0);
+	signal rt_addr	: std_logic_vector (4 downto 0);
+	signal rs_addr	: std_logic_vector (4 downto 0);
+	signal SUM		: std_logic_vector (31 downto 0);
+	signal rd_data	: std_logic_vector (31 downto 0);
+	signal rt_data	: std_logic_vector (31 downto 0);
+	signal rs_data	: std_logic_vector (31 downto 0);
+	signal tmp 		: std_logic_vector (31 downto 0);
+
+begin
+
+	op_code <= ir (31 downto 28);
+	rd_addr <= ir (27 downto 23);
+	rt_addr <= ir (22 downto 18);
+	rs_addr <= ir (17 downto 13);
+	
+	SYED_register: SYED_register_file
+		port map ( rd1add=>rs_addr, rd2add=>rt_addr, wradd=>rd_addr, data=>tmp, wren=>'1', clock=>clk, Q1=>rs_data, Q2=>rt_data );
+		
+	SYED_add_sub : SYED_lpm_Add_Sub_Signed
+		port map ( add_sub=>'0', cin=>'0', dataa=>rs_data, datab=>rt_data, cout=>Cout, overflow=>Overflow, result=>tmp);
+
+	Result <= tmp;
+
+end Structure;

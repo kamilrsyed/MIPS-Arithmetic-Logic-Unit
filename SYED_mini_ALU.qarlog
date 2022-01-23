@@ -1,0 +1,23 @@
+Quartus Prime Archive log --	C:/Users/krsye/Documents/CCNY/Quartus Projects/SYED_mini_MIPS_ALU/SYED_mini_ALU.qarlog
+
+Archive:	C:/Users/krsye/Documents/CCNY/Quartus Projects/SYED_mini_MIPS_ALU/SYED_mini_ALU.qar
+Date:		Sun Nov 14 21:39:43 2021
+Quartus Prime		20.1.1 Build 720 11/11/2020 SJ Lite Edition
+
+	=========== Files Selected: ===========
+C:/Users/krsye/Documents/CCNY/Quartus Projects/SYED_mini_MIPS_ALU/README.txt
+C:/Users/krsye/Documents/CCNY/Quartus Projects/SYED_mini_MIPS_ALU/SYED_1bit_Full_Adder.vhd
+C:/Users/krsye/Documents/CCNY/Quartus Projects/SYED_mini_MIPS_ALU/SYED_Half_Adder.vhd
+C:/Users/krsye/Documents/CCNY/Quartus Projects/SYED_mini_MIPS_ALU/SYED_IMM_register.vhd
+C:/Users/krsye/Documents/CCNY/Quartus Projects/SYED_mini_MIPS_ALU/SYED_MDR.vhd
+C:/Users/krsye/Documents/CCNY/Quartus Projects/SYED_mini_MIPS_ALU/SYED_Overflow_Logic.vhd
+C:/Users/krsye/Documents/CCNY/Quartus Projects/SYED_mini_MIPS_ALU/SYED_mini_ALU.qpf
+C:/Users/krsye/Documents/CCNY/Quartus Projects/SYED_mini_MIPS_ALU/SYED_mini_ALU.qsf
+C:/Users/krsye/Documents/CCNY/Quartus Projects/SYED_mini_MIPS_ALU/SYED_mini_ALU.vhd
+C:/Users/krsye/Documents/CCNY/Quartus Projects/SYED_mini_MIPS_ALU/SYED_nbit_Add_Sub.vhd
+C:/Users/krsye/Documents/CCNY/Quartus Projects/SYED_mini_MIPS_ALU/SYED_register_file.vhd
+c:/intelfpga_lite/20.1/quartus/bin64/assignment_defaults.qdf
+	======= Total: 12 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.
